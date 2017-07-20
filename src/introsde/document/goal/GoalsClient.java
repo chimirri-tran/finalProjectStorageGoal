@@ -68,6 +68,8 @@ public class GoalsClient {
 	final String BODY_NAMESPACE_TAG = "m";
 
 	String mediaType = "text/xml";
+	
+	public GoalsClient(){}
 
 	public GoalsClient(String endpointUrl) throws Exception {
 		// My server local
@@ -191,7 +193,7 @@ public class GoalsClient {
 
 		}
 
-
+/*
 	public static void main(String[] args) throws Exception {
 		// assert() : "mi aspetto true";
 		if (args.length < 1)
@@ -232,12 +234,12 @@ public class GoalsClient {
 //					   found = rootElement.getTextContent();
 //				   }
 //			   }
-			    
+/*			    
 			} catch (Exception ex) {
 				ex.printStackTrace();
 			}
 		}
-	}
+	}*/
 
 	public List<Goal> request_1() {
 		System.out.println("REQUEST 1");
