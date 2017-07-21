@@ -38,13 +38,16 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.xml.sax.InputSource;
 
-import introsde.document.goal.JaxWsHandlerResolver;
 import introsde.document.ws.Goal;
 import introsde.document.ws.Goals;
+
 @Stateless
 @LocalBean
 @Path("/goalStorage")
 public class GoalsClient {
+
+	public GoalsClient() {
+	}
 
 	private URL url;
 	private QName qname;
@@ -66,8 +69,6 @@ public class GoalsClient {
 	final String BODY_NAMESPACE_TAG = "m";
 
 	String mediaType = "text/xml";
-	
-	public GoalsClient(){}
 
 	public GoalsClient(String endpointUrl) throws Exception {
 		// My server local
@@ -99,145 +100,149 @@ public class GoalsClient {
 		soapConnection = soapConnectionFactory.createConnection();
 	}
 
-	
 	// ricevo dati da sopra per salvare utente se non esiste o per aggiornare se
-		// esiste
-		@GET
+	// esiste
+	@GET
 
-		@Produces({ MediaType.TEXT_XML, MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
-		public String receiveData(
-				@DefaultValue("") @QueryParam("savegoal") String savegoal,
-				@DefaultValue("") @QueryParam("finalweight") String finalweight,
-				@DefaultValue("") @QueryParam("actualweight") String actualweight,
-				@DefaultValue("") @QueryParam("heartrate") String heartrate,
-				@DefaultValue("") @QueryParam("height") String height,
-				@DefaultValue("") @QueryParam("initialweight") String initialweight,
-				@DefaultValue("") @QueryParam("lostweight") String lostweight,
-				@DefaultValue("") @QueryParam("minbloodpressure") String minbloodpressure,
-				@DefaultValue("") @QueryParam("maxbloodpressure") String maxbloodpressure,
-				@DefaultValue("") @QueryParam("sleephours") String sleephours,
-				@DefaultValue("") @QueryParam("steps") String steps,
-				@DefaultValue("") @QueryParam("idperson") String idperson
-				) 
-						throws Exception {
+	@Produces({ MediaType.TEXT_XML, MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+	public String receiveData(@DefaultValue("") @QueryParam("savegoal") String savegoal,
+			@DefaultValue("") @QueryParam("finalweight") String finalweight,
+			@DefaultValue("") @QueryParam("actualweight") String actualweight,
+			@DefaultValue("") @QueryParam("heartrate") String heartrate,
+			@DefaultValue("") @QueryParam("height") String height,
+			@DefaultValue("") @QueryParam("initialweight") String initialweight,
+			@DefaultValue("") @QueryParam("lostweight") String lostweight,
+			@DefaultValue("") @QueryParam("minbloodpressure") String minbloodpressure,
+			@DefaultValue("") @QueryParam("maxbloodpressure") String maxbloodpressure,
+			@DefaultValue("") @QueryParam("sleephours") String sleephours,
+			@DefaultValue("") @QueryParam("steps") String steps,
+			@DefaultValue("") @QueryParam("idperson") String idperson) throws Exception {
+		if (savegoal.equals("yes")) {
+
 			System.out.println("GET");
 			String urlserver = "http://localhost:6904/ws/goal";
 			GoalsClient g = new GoalsClient(urlserver);
-				if (savegoal.equals("yes")){
-			String ggg="nuovo";
-			for (int i = 0; i < g.request_1().size(); i++) {
-				if (g.request_1().get(i).getIdPerson()== Integer.parseInt(idperson)) {
-					 SOAPMessage soapResponse3 = g.soapConnection
-							 .call(g.request_3(Double.parseDouble(actualweight), Double.parseDouble(finalweight), Integer.parseInt(heartrate), Double.parseDouble(height), Integer.parseInt(idperson),
-									 Double.parseDouble(initialweight), Integer.parseInt(lostweight), Integer.parseInt(minbloodpressure), Integer.parseInt(maxbloodpressure), Integer.parseInt(sleephours) ,Integer.parseInt(steps)), g.url);
-							 System.out.println("INBOUND MESSAGE\n");
-							 System.out.println(getSOAPMessageAsString(soapResponse3));
-					
-					ggg="";
-					return "update user";
-				}
-
-			}
-			if (ggg.equals("nuovo")) {
-				
-				SOAPMessage soapResponse4 = g.soapConnection.call(g.request_4( Double.parseDouble(actualweight), Double.parseDouble(finalweight), Integer.parseInt(heartrate), Double.parseDouble(height), Integer.parseInt(idperson),
-						 Double.parseDouble(initialweight), Integer.parseInt(lostweight), Integer.parseInt(minbloodpressure), Integer.parseInt(maxbloodpressure), Integer.parseInt(sleephours) ,Integer.parseInt(steps)), g.url);
-				System.out.println("INBOUND MESSAGE\n");
-				System.out.println(getSOAPMessageAsString(soapResponse4));
-				/**/
-				domFactory = DocumentBuilderFactory.newInstance();
-				domFactory.setNamespaceAware(true);
-				builder = domFactory.newDocumentBuilder();
-				doc = builder.parse(new InputSource(new StringReader(getSOAPMessageAsString(soapResponse4))));
-				Element rootElement = doc.getDocumentElement();
-
-				String found = "";
-				for (int i = 0; i < rootElement.getChildNodes().getLength(); i++) {
-					System.out.println("found: " + rootElement.getTextContent());
-					if (rootElement.getChildNodes().item(i).getNodeName().equals("idPerson")) {
-						found = rootElement.getTextContent();
-					}
-				}
-				return rootElement.getTextContent();
-				/**/
-			}
-			}else {
+			if (savegoal.equals("yes")) {
+				String ggg = "nuovo";
 				for (int i = 0; i < g.request_1().size(); i++) {
-					if (g.request_1().get(i).getIdPerson()==  Integer.parseInt(idperson)) {
-						Goal goal= g.getGoalByIdPerson(Integer.parseInt(idperson));
+					if (g.request_1().get(i).getIdPerson() == Integer.parseInt(idperson)) {
+						SOAPMessage soapResponse3 = g.soapConnection.call(g.request_3(Double.parseDouble(actualweight),
+								Double.parseDouble(finalweight), Integer.parseInt(heartrate),
+								Double.parseDouble(height), Integer.parseInt(idperson),
+								Double.parseDouble(initialweight), Integer.parseInt(lostweight),
+								Integer.parseInt(minbloodpressure), Integer.parseInt(maxbloodpressure),
+								Integer.parseInt(sleephours), Integer.parseInt(steps)), g.url);
+						System.out.println("INBOUND MESSAGE\n");
+						System.out.println(getSOAPMessageAsString(soapResponse3));
+
+						ggg = "";
+						return "update user";
+					}
+
+				}
+				if (ggg.equals("nuovo")) {
+
+					SOAPMessage soapResponse4 = g.soapConnection.call(g.request_4(Double.parseDouble(actualweight),
+							Double.parseDouble(finalweight), Integer.parseInt(heartrate), Double.parseDouble(height),
+							Integer.parseInt(idperson), Double.parseDouble(initialweight), Integer.parseInt(lostweight),
+							Integer.parseInt(minbloodpressure), Integer.parseInt(maxbloodpressure),
+							Integer.parseInt(sleephours), Integer.parseInt(steps)), g.url);
+					System.out.println("INBOUND MESSAGE\n");
+					System.out.println(getSOAPMessageAsString(soapResponse4));
+					/**/
+					domFactory = DocumentBuilderFactory.newInstance();
+					domFactory.setNamespaceAware(true);
+					builder = domFactory.newDocumentBuilder();
+					doc = builder.parse(new InputSource(new StringReader(getSOAPMessageAsString(soapResponse4))));
+					Element rootElement = doc.getDocumentElement();
+
+					String found = "";
+					for (int i = 0; i < rootElement.getChildNodes().getLength(); i++) {
+						System.out.println("found: " + rootElement.getTextContent());
+						if (rootElement.getChildNodes().item(i).getNodeName().equals("idPerson")) {
+							found = rootElement.getTextContent();
+						}
+					}
+					return rootElement.getTextContent();
+					/**/
+				}
+			} else {
+				for (int i = 0; i < g.request_1().size(); i++) {
+					if (g.request_1().get(i).getIdPerson() == Integer.parseInt(idperson)) {
+						Goal goal = g.getGoalByIdPerson(Integer.parseInt(idperson));
 						JSONObject params = new JSONObject();
-						  params.put("finalweight",goal.getFinalWeight());
-						  params.put("actualweight",goal.getActualWeight());
-						  params.put("heartrate",goal.getHeartRate());
-						  params.put("idperson",goal.getIdPerson());
-						  params.put("height",goal.getHeight());
-						  params.put("initialweight",goal.getInitialWeight());
-						  params.put("lostweight",goal.getLostWeight());
-						  params.put("minbloodpressure",goal.getMinBloodPressure());
-						  params.put("maxbloodpressure",goal.getMaxBloodPressure());
-						  params.put("sleephours",goal.getSleepHours());
-						  params.put("steps",goal.getSteps());
+						params.put("finalweight", goal.getFinalWeight());
+						params.put("actualweight", goal.getActualWeight());
+						params.put("heartrate", goal.getHeartRate());
+						params.put("idperson", goal.getIdPerson());
+						params.put("height", goal.getHeight());
+						params.put("initialweight", goal.getInitialWeight());
+						params.put("lostweight", goal.getLostWeight());
+						params.put("minbloodpressure", goal.getMinBloodPressure());
+						params.put("maxbloodpressure", goal.getMaxBloodPressure());
+						params.put("sleephours", goal.getSleepHours());
+						params.put("steps", goal.getSteps());
 						return params.toString();
 					} else {
 						return "-1";
-				
+
 					}
 
 				}
 			}
-				return null;
 
-			// MANDARE UNA RISPOSTA AL LIVELLO SOPRA return ;
-
+			return "-1";
+		} else {
+			return "-1";
 		}
 
-/*
-	public static void main(String[] args) throws Exception {
-		// assert() : "mi aspetto true";
-		if (args.length < 1)
-			System.out.println("Error: insert server url");
+		// MANDARE UNA RISPOSTA AL LIVELLO SOPRA return ;
 
-		else {
-			
-			try {
+	}
 
-				GoalsClient c = new GoalsClient(args[0]);
-				System.out.println("**STEP 2*");
-				c.getGoalByIdPerson(3);
-				//c.request_1();
-				//c.getGoalByIdPerson();
-
-//				 SOAPMessage soapResponse3 = c.soapConnection
-//				 .call(c.request_3(ChooseId), c.url);
-//				 System.out.println("INBOUND MESSAGE\n");
-//				 System.out.println(getSOAPMessageAsString(soapResponse3));
-//				
-//
-//				SOAPMessage soapResponse4 = c.soapConnection.call(c.request_4( ActualWeight,  FinalWeight,  HeartRate,  Height,  idPerson,
-//						 InitialWeight,  LostWeight, 	 MinBloodPressure,  MaxBloodPressure,  SleepHours ,  Steps), c.url);
-//				System.out.println("INBOUND MESSAGE\n");
-//				System.out.println(getSOAPMessageAsString(soapResponse4));
-				
-				/**/
-//				 domFactory = DocumentBuilderFactory.newInstance();
-//				  domFactory.setNamespaceAware(true);
-//				  builder = domFactory.newDocumentBuilder();
-//			     doc = builder.parse(new InputSource(new StringReader(getSOAPMessageAsString(soapResponse4))));
-//			    Element rootElement = doc.getDocumentElement();
-//			   
-//			   String found="";
-//			   for(int i = 0; i < rootElement.getChildNodes().getLength();i++){
-//					System.out.println("found: "+rootElement.getTextContent());
-//				   if (rootElement.getChildNodes().item(i).getNodeName().equals("idPerson")){
-//					   found = rootElement.getTextContent();
-//				   }
-//			   }
-/*			    
-			} catch (Exception ex) {
-				ex.printStackTrace();
-			}
-		}
-	}*/
+	/*
+	 * public static void main(String[] args) throws Exception { // assert() :
+	 * "mi aspetto true"; if (args.length < 1)
+	 * System.out.println("Error: insert server url");
+	 * 
+	 * else {
+	 * 
+	 * try {
+	 * 
+	 * GoalsClient c = new GoalsClient(args[0]);
+	 * System.out.println("**STEP 2*"); c.getGoalByIdPerson(3); //c.request_1();
+	 * //c.getGoalByIdPerson();
+	 * 
+	 * // SOAPMessage soapResponse3 = c.soapConnection //
+	 * .call(c.request_3(ChooseId), c.url); //
+	 * System.out.println("INBOUND MESSAGE\n"); //
+	 * System.out.println(getSOAPMessageAsString(soapResponse3)); // // //
+	 * SOAPMessage soapResponse4 = c.soapConnection.call(c.request_4(
+	 * ActualWeight, FinalWeight, HeartRate, Height, idPerson, // InitialWeight,
+	 * LostWeight, MinBloodPressure, MaxBloodPressure, SleepHours , Steps),
+	 * c.url); // System.out.println("INBOUND MESSAGE\n"); //
+	 * System.out.println(getSOAPMessageAsString(soapResponse4));
+	 * 
+	 * /
+	 **/
+	// domFactory = DocumentBuilderFactory.newInstance();
+	// domFactory.setNamespaceAware(true);
+	// builder = domFactory.newDocumentBuilder();
+	// doc = builder.parse(new InputSource(new
+	// StringReader(getSOAPMessageAsString(soapResponse4))));
+	// Element rootElement = doc.getDocumentElement();
+	//
+	// String found="";
+	// for(int i = 0; i < rootElement.getChildNodes().getLength();i++){
+	// System.out.println("found: "+rootElement.getTextContent());
+	// if
+	// (rootElement.getChildNodes().item(i).getNodeName().equals("idPerson")){
+	// found = rootElement.getTextContent();
+	// }
+	// }
+	/*
+	 * } catch (Exception ex) { ex.printStackTrace(); } } }
+	 */
 
 	public List<Goal> request_1() {
 		System.out.println("REQUEST 1");
@@ -249,21 +254,22 @@ public class GoalsClient {
 		System.out.println("REQUEST 2");
 		templateRequest(2, "POST", mediaType);
 		int i = 52;
-	
+
 		goals.readGoal(i);
-		
+
 	}
-	
-	public Goal getGoalByIdPerson(int i ) {
+
+	public Goal getGoalByIdPerson(int i) {
 		System.out.println("getGoalByIdPerson");
 		templateRequest(2, "POST", mediaType);
-		
+
 		return goals.getGoalByIdPerson(i);
-		
+
 	}
 
 	public SOAPMessage request_3(double ActualWeight, double FinalWeight, int HeartRate, double Height, int idPerson,
-			double InitialWeight, double LostWeight, 	int MinBloodPressure, int MaxBloodPressure, int SleepHours , int Steps) {
+			double InitialWeight, double LostWeight, int MinBloodPressure, int MaxBloodPressure, int SleepHours,
+			int Steps) {
 		String method_3 = "updateGoal";
 		String arg0 = "idGoal";
 		String arg1 = "actualWeight";
@@ -277,16 +283,15 @@ public class GoalsClient {
 		String arg9 = "minBloodPressure";
 		String arg10 = "sleepHours";
 		String arg11 = "steps";
-		
-		
+
 		try {
 			createSOAPRequest();
 			SOAPElement updateGoal = soapBody.addChildElement(method_3, BODY_NAMESPACE_TAG);
 
 			SOAPElement goal = updateGoal.addChildElement("goal");
 
-//			SOAPElement goalId = goal.addChildElement(arg0);
-//			 goalId.addTextNode(String.valueOf(idGoal));
+			// SOAPElement goalId = goal.addChildElement(arg0);
+			// goalId.addTextNode(String.valueOf(idGoal));
 
 			SOAPElement actualWeight = goal.addChildElement(arg1);
 			actualWeight.addTextNode(String.valueOf(ActualWeight));
@@ -321,7 +326,7 @@ public class GoalsClient {
 			SOAPElement steps = goal.addChildElement(arg11);
 			steps.addTextNode(String.valueOf(Steps));
 
-			//goal.addChildElement(goalId);
+			// goal.addChildElement(goalId);
 			goal.addChildElement(actualWeight);
 			goal.addChildElement(finalWeight);
 			goal.addChildElement(heartRate);
@@ -350,7 +355,8 @@ public class GoalsClient {
 	}
 
 	public SOAPMessage request_4(double ActualWeight, double FinalWeight, int HeartRate, double Height, int idPerson,
-	double InitialWeight, double LostWeight, 	int MinBloodPressure, int MaxBloodPressure, int SleepHours , int Steps) {
+			double InitialWeight, double LostWeight, int MinBloodPressure, int MaxBloodPressure, int SleepHours,
+			int Steps) {
 
 		SOAPElement createGoal = null;
 		String method_4 = "createGoal";
@@ -368,7 +374,7 @@ public class GoalsClient {
 		String arg11 = "steps";
 
 		int idGoal;
-		
+
 		try {
 			createSOAPRequest();
 			createGoal = soapBody.addChildElement(method_4, BODY_NAMESPACE_TAG);
@@ -426,7 +432,7 @@ public class GoalsClient {
 			System.out.println("OUTBOUND MESSAGE\n");
 			System.out.println(getSOAPMessageAsString(soapMessage));
 			System.out.println();
-			
+
 			return soapMessage;
 
 		} catch (Exception ex) {
