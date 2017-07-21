@@ -45,8 +45,6 @@ import introsde.document.ws.Goals;
 @LocalBean
 @Path("/goalStorage")
 public class GoalsClient {
-	
-	public GoalsClient(){}
 
 	private URL url;
 	private QName qname;
