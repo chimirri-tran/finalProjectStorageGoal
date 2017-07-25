@@ -71,14 +71,7 @@ public class GoalsClient {
 	String mediaType = "text/xml";
 
 	public GoalsClient(String endpointUrl) throws Exception {
-		// My server local
-		// final String MY_LOCAL_SERVER = "http://127.0.1.1:6902";
-
-		// My server that should be deployed on Heroku
-		// String MY_HEROKU_SERVER = "https://agile-shelf-1769.herokuapp.com";
-		// String BASE_URL = "/ws/people";
-		// String endpointUrl = MY_HEROKU_SERVER + BASE_URL + "?wsdl";
-
+	
 		System.out.println("Starting Goals Service...");
 		System.out.println("**STEP 1**");
 		System.out.println("WSDL url " + endpointUrl + "\n[kill the process to exit]");
@@ -136,7 +129,7 @@ public class GoalsClient {
 						System.out.println(getSOAPMessageAsString(soapResponse3));
 
 						ggg = "";
-						return "update user";
+						System.out.println( "update user");
 					}
 
 				}
@@ -196,53 +189,7 @@ public class GoalsClient {
 			return "-1";
 		}
 
-		// MANDARE UNA RISPOSTA AL LIVELLO SOPRA return ;
-
 	}
-
-	/*
-	 * public static void main(String[] args) throws Exception { // assert() :
-	 * "mi aspetto true"; if (args.length < 1)
-	 * System.out.println("Error: insert server url");
-	 * 
-	 * else {
-	 * 
-	 * try {
-	 * 
-	 * GoalsClient c = new GoalsClient(args[0]);
-	 * System.out.println("**STEP 2*"); c.getGoalByIdPerson(3); //c.request_1();
-	 * //c.getGoalByIdPerson();
-	 * 
-	 * // SOAPMessage soapResponse3 = c.soapConnection //
-	 * .call(c.request_3(ChooseId), c.url); //
-	 * System.out.println("INBOUND MESSAGE\n"); //
-	 * System.out.println(getSOAPMessageAsString(soapResponse3)); // // //
-	 * SOAPMessage soapResponse4 = c.soapConnection.call(c.request_4(
-	 * ActualWeight, FinalWeight, HeartRate, Height, idPerson, // InitialWeight,
-	 * LostWeight, MinBloodPressure, MaxBloodPressure, SleepHours , Steps),
-	 * c.url); // System.out.println("INBOUND MESSAGE\n"); //
-	 * System.out.println(getSOAPMessageAsString(soapResponse4));
-	 * 
-	 * /
-	 **/
-	// domFactory = DocumentBuilderFactory.newInstance();
-	// domFactory.setNamespaceAware(true);
-	// builder = domFactory.newDocumentBuilder();
-	// doc = builder.parse(new InputSource(new
-	// StringReader(getSOAPMessageAsString(soapResponse4))));
-	// Element rootElement = doc.getDocumentElement();
-	//
-	// String found="";
-	// for(int i = 0; i < rootElement.getChildNodes().getLength();i++){
-	// System.out.println("found: "+rootElement.getTextContent());
-	// if
-	// (rootElement.getChildNodes().item(i).getNodeName().equals("idPerson")){
-	// found = rootElement.getTextContent();
-	// }
-	// }
-	/*
-	 * } catch (Exception ex) { ex.printStackTrace(); } } }
-	 */
 
 	public List<Goal> request_1() {
 		System.out.println("REQUEST 1");
