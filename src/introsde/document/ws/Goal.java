@@ -67,7 +67,7 @@ public class Goal {
     protected int steps;
 
     /**
-     * Recupera il valore della proprietà actualWeight.
+     * Recupera il valore della proprieta actualWeight.
      * 
      */
     public double getActualWeight() {
@@ -75,7 +75,7 @@ public class Goal {
     }
 
     /**
-     * Imposta il valore della proprietà actualWeight.
+     * Imposta il valore della proprieta actualWeight.
      * 
      */
     public void setActualWeight(double value) {
@@ -83,7 +83,7 @@ public class Goal {
     }
 
     /**
-     * Recupera il valore della proprietà finalWeight.
+     * Recupera il valore della proprieta finalWeight.
      * 
      */
     public double getFinalWeight() {
@@ -91,7 +91,7 @@ public class Goal {
     }
 
     /**
-     * Imposta il valore della proprietà finalWeight.
+     * Imposta il valore della proprieta finalWeight.
      * 
      */
     public void setFinalWeight(double value) {
@@ -99,7 +99,7 @@ public class Goal {
     }
 
     /**
-     * Recupera il valore della proprietà heartRate.
+     * Recupera il valore della proprieta heartRate.
      * 
      */
     public int getHeartRate() {
@@ -107,7 +107,7 @@ public class Goal {
     }
 
     /**
-     * Imposta il valore della proprietà heartRate.
+     * Imposta il valore della proprieta heartRate.
      * 
      */
     public void setHeartRate(int value) {
@@ -115,7 +115,7 @@ public class Goal {
     }
 
     /**
-     * Recupera il valore della proprietà height.
+     * Recupera il valore della proprieta height.
      * 
      */
     public double getHeight() {
@@ -123,7 +123,7 @@ public class Goal {
     }
 
     /**
-     * Imposta il valore della proprietà height.
+     * Imposta il valore della proprieta height.
      * 
      */
     public void setHeight(double value) {
@@ -131,7 +131,7 @@ public class Goal {
     }
 
     /**
-     * Recupera il valore della proprietà idGoal.
+     * Recupera il valore della proprieta idGoal.
      * 
      */
     public int getIdGoal() {
@@ -139,7 +139,7 @@ public class Goal {
     }
 
     /**
-     * Imposta il valore della proprietà idGoal.
+     * Imposta il valore della proprieta idGoal.
      * 
      */
     public void setIdGoal(int value) {
@@ -147,7 +147,7 @@ public class Goal {
     }
 
     /**
-     * Recupera il valore della proprietà initialWeight.
+     * Recupera il valore della proprieta initialWeight.
      * 
      */
     public double getInitialWeight() {
@@ -155,7 +155,7 @@ public class Goal {
     }
 
     /**
-     * Imposta il valore della proprietà initialWeight.
+     * Imposta il valore della proprieta initialWeight.
      * 
      */
     public void setInitialWeight(double value) {
@@ -163,7 +163,7 @@ public class Goal {
     }
 
     /**
-     * Recupera il valore della proprietà lostWeight.
+     * Recupera il valore della proprieta lostWeight.
      * 
      */
     public int getLostWeight() {
@@ -171,7 +171,7 @@ public class Goal {
     }
 
     /**
-     * Imposta il valore della proprietà lostWeight.
+     * Imposta il valore della proprieta lostWeight.
      * 
      */
     public void setLostWeight(int value) {
@@ -179,7 +179,7 @@ public class Goal {
     }
 
     /**
-     * Recupera il valore della proprietà maxBloodPressure.
+     * Recupera il valore della proprieta maxBloodPressure.
      * 
      */
     public int getMaxBloodPressure() {
@@ -187,7 +187,7 @@ public class Goal {
     }
 
     /**
-     * Imposta il valore della proprietà maxBloodPressure.
+     * Imposta il valore della proprieta maxBloodPressure.
      * 
      */
     public void setMaxBloodPressure(int value) {
@@ -195,7 +195,7 @@ public class Goal {
     }
 
     /**
-     * Recupera il valore della proprietà minBloodPressure.
+     * Recupera il valore della proprieta minBloodPressure.
      * 
      */
     public int getMinBloodPressure() {
@@ -203,7 +203,7 @@ public class Goal {
     }
 
     /**
-     * Imposta il valore della proprietà minBloodPressure.
+     * Imposta il valore della proprieta minBloodPressure.
      * 
      */
     public void setMinBloodPressure(int value) {
@@ -211,7 +211,7 @@ public class Goal {
     }
 
     /**
-     * Recupera il valore della proprietà sleepHours.
+     * Recupera il valore della proprieta sleepHours.
      * 
      */
     public int getSleepHours() {
@@ -219,7 +219,7 @@ public class Goal {
     }
 
     /**
-     * Imposta il valore della proprietà sleepHours.
+     * Imposta il valore della proprieta sleepHours.
      * 
      */
     public void setSleepHours(int value) {
@@ -227,7 +227,7 @@ public class Goal {
     }
 
     /**
-     * Recupera il valore della proprietà steps.
+     * Recupera il valore della proprieta steps.
      * 
      */
     public int getSteps() {
@@ -235,7 +235,7 @@ public class Goal {
     }
 
     /**
-     * Imposta il valore della proprietà steps.
+     * Imposta il valore della proprieta steps.
      * 
      */
     public void setSteps(int value) {

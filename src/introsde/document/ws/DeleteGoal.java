@@ -34,7 +34,7 @@ public class DeleteGoal {
     protected int goalId;
 
     /**
-     * Recupera il valore della proprietà goalId.
+     * Recupera il valore della proprieta goalId.
      * 
      */
     public int getGoalId() {
@@ -42,7 +42,7 @@ public class DeleteGoal {
     }
 
     /**
-     * Imposta il valore della proprietà goalId.
+     * Imposta il valore della proprieta goalId.
      * 
      */
     public void setGoalId(int value) {

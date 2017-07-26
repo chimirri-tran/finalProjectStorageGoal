@@ -34,7 +34,7 @@ public class GetGoalByIdPersonResponse {
     protected Goal message;
 
     /**
-     * Recupera il valore della proprietà message.
+     * Recupera il valore della proprieta message.
      * 
      * @return
      *     possible object is
@@ -46,7 +46,7 @@ public class GetGoalByIdPersonResponse {
     }
 
     /**
-     * Imposta il valore della proprietà message.
+     * Imposta il valore della proprieta message.
      * 
      * @param value
      *     allowed object is

@@ -84,9 +84,7 @@ public class GoalsClient {
 
 		Service service = Service.create(url, qname);
 
-		FileOutputStream fos = new FileOutputStream(new File("output.txt"), true);
-		service.setHandlerResolver(new JaxWsHandlerResolver(fos));
-		goals = service.getPort(Goals.class);
+
 
 		// Create SOAP Connection
 		soapConnectionFactory = SOAPConnectionFactory.newInstance();

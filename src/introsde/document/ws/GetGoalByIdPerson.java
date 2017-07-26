@@ -34,7 +34,7 @@ public class GetGoalByIdPerson {
     protected int idPerson;
 
     /**
-     * Recupera il valore della proprietà idPerson.
+     * Recupera il valore della proprieta idPerson.
      * 
      */
     public int getIdPerson() {
@@ -42,7 +42,7 @@ public class GetGoalByIdPerson {
     }
 
     /**
-     * Imposta il valore della proprietà idPerson.
+     * Imposta il valore della proprieta idPerson.
      * 
      */
     public void setIdPerson(int value) {

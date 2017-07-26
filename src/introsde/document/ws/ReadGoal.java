@@ -34,7 +34,7 @@ public class ReadGoal {
     protected int idGoal;
 
     /**
-     * Recupera il valore della proprietà idGoal.
+     * Recupera il valore della proprieta idGoal.
      * 
      */
     public int getIdGoal() {
@@ -42,7 +42,7 @@ public class ReadGoal {
     }
 
     /**
-     * Imposta il valore della proprietà idGoal.
+     * Imposta il valore della proprieta idGoal.
      * 
      */
     public void setIdGoal(int value) {
